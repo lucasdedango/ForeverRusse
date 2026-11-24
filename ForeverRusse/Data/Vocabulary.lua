@@ -1,0 +1,50 @@
+local _, A = ...
+-- Original pedagogical glossary, not a copy of game catalogs. Stress is marked when supplied.
+-- ru, fr, category, optional note
+A.vocabulary = {
+{"лес","forêt","monde"},{"вода́","eau","quotidien"},{"ого́нь","feu","monde"},{"лёд","glace","monde"},
+{"земля́","terre","monde"},{"ве́тер","vent","monde"},{"го́род","ville","monde"},{"дере́вня","village","monde"},
+{"доро́га","route","monde"},{"гора́","montagne","monde"},{"река́","rivière","monde"},{"о́зеро","lac","monde"},
+{"мо́ре","mer","monde"},{"дом","maison","quotidien"},{"дверь","porte","quotidien"},{"ключ","clé","quotidien"},
+{"кни́га","livre","quotidien"},{"ка́мень","pierre","monde"},{"трава́","herbe","métier"},{"цвето́к","fleur","métier"},
+{"руда́","minerai","métier"},{"медь","cuivre","métier"},{"желе́зо","fer","métier"},{"зо́лото","or","métier"},
+{"серебро́","argent (métal)","métier"},{"ры́ба","poisson","métier"},{"мя́со","viande","quotidien"},{"хлеб","pain","quotidien"},
+{"молоко́","lait","quotidien"},{"еда́","nourriture","quotidien"},{"су́мка","sac","objet"},{"ме́ч","épée","objet"},
+{"щит","bouclier","objet"},{"ору́жие","arme","objet"},{"броня́","armure","objet"},{"зе́лье","potion","objet"},
+{"стрела́","flèche","objet"},{"посо́х","bâton (arme)","objet"},{"письмо́","lettre (courrier)","quotidien"},{"де́ньги","argent (monnaie)","quotidien"},
+{"волк","loup","créature"},{"медве́дь","ours","créature"},{"па́ук","araignée","créature"},{"драко́н","dragon","créature"},
+{"враг","ennemi","créature"},{"друг","ami","quotidien"},{"маг","mage","combat"},{"вои́н","guerrier","combat"},
+{"у́рон","dégâts","combat"},{"здоро́вье","santé","combat"},{"по́мощь","aide","quotidien"},{"опа́сность","danger","quête"},
+{"зада́ние","mission","quête"},{"награ́да","récompense","quête"},{"цель","objectif","quête"},{"пу́ть","chemin","quête"},
+{"найти́","trouver","verbe"},{"иска́ть","chercher","verbe"},{"уби́ть","tuer","verbe"},{"принести́","apporter","verbe"},
+{"взять","prendre","verbe"},{"отда́ть","remettre","verbe"},{"верну́ться","revenir","verbe"},{"ждать","attendre","verbe"},
+{"идти́","aller à pied","verbe"},{"бежа́ть","courir","verbe"},{"пить","boire","verbe"},{"есть","manger","verbe","aussi 'il y a' selon le contexte"},
+{"купи́ть","acheter","verbe"},{"прода́ть","vendre","verbe"},{"чита́ть","lire","verbe"},{"говори́ть","parler","verbe"},
+{"понима́ть","comprendre","verbe"},{"помо́чь","aider","verbe"},{"откры́ть","ouvrir","verbe"},{"закры́ть","fermer","verbe"},
+{"один","un","nombre"},{"два","deux","nombre"},{"три","trois","nombre"},{"четы́ре","quatre","nombre"},
+{"пять","cinq","nombre"},{"шесть","six","nombre"},{"семь","sept","nombre"},{"во́семь","huit","nombre"},
+{"де́вять","neuf","nombre"},{"де́сять","dix","nombre"},{"сего́дня","aujourd’hui","quotidien"},{"за́втра","demain","quotidien"},
+{"здесь","ici","quotidien"},{"там","là-bas","quotidien"},{"где","où","quotidien"},{"когда́","quand","quotidien"},
+{"да","oui","conversation"},{"нет","non","conversation"},{"приве́т","salut","conversation"},{"спаси́бо","merci","conversation"},
+{"пожа́луйста","s’il te plaît / de rien","conversation"},{"бы́стро","vite","quotidien"},{"ме́дленно","lentement","quotidien"},
+{"ка́рта","carte","interface"},{"настро́йки","paramètres","interface"},{"по́чта","courrier","interface"},{"гру́ппа","groupe","interface"},
+{"подземе́лье","donjon","interface"},{"заклина́ние","sort","interface"},{"уро́вень","niveau","interface"},
+{"травни́чество","herboristerie","métier"},{"рыба́лка","pêche","métier"},{"кулина́рия","cuisine","métier"},
+{"Приве́т!","Salut !","phrase"},{"Я гото́в.","Je suis prêt (masculin).","phrase"},{"Я гото́ва.","Je suis prête (féminin).","phrase"},
+{"Подожди́ немно́го.","Attends un peu.","phrase"},{"Спаси́бо за по́мощь!","Merci pour ton aide !","phrase"},
+{"Я учу́ ру́сский язык.","J’apprends le russe.","phrase"},{"Я не понима́ю.","Je ne comprends pas.","phrase"},
+{"Где ты?","Où es-tu ?","phrase"},{"Пойдём!","Allons-y !","phrase"},{"Мне нужна́ по́мощь.","J’ai besoin d’aide.","phrase"},
+{"Уда́чи!","Bonne chance !","phrase"},{"До встре́чи!","À bientôt !","phrase"},{"Мо́жно медле́ннее?","Plus lentement, s’il te plaît ?","phrase"},
+{"Вы говори́те по-францу́зски?","Vous parlez français ?","phrase"},
+}
+A.grammar = {
+{"Accusatif : destination / objet","Я иду́ в лес. — Je vais dans la forêt.\nЯ чита́ю кни́гу. — Je lis un livre.\nкни́га → кни́гу : féminin singulier, objet direct."},
+{"Prépositionnel : localisation","Я в лесу́. — Je suis dans la forêt.\nЯ в де́ревне. — Je suis au village.\nлесу́ est une forme locative spéciale."},
+{"Génitif après une quantité","два волка́ — deux loups\nпять волко́в — cinq loups\nAprès 2–4 et 5+, les formes diffèrent (avec exceptions pour 11–14)."},
+{"Aspect verbal","иска́ть — chercher (imperfectif)\nнайти́ — trouver (perfectif, résultat)\nCe sont des verbes liés par le sens, pas une paire aspectuelle stricte."},
+{"Genre et accord","но́вый меч — une épée neuve\nно́вая кни́га — un livre neuf\nно́вое зе́лье — une potion neuve"},
+{"Politesse","Подожди́! — Attends ! (tu)\nПодожди́те! — Attendez ! (vous)"},
+{"Accent et réduction","вода́ — eau : le о non accentué se rapproche de a.\nLa translittération lettre par lettre ne représente pas exactement la prononciation."},
+}
+-- Small offline fallback: common classic IDs (not verified in Forever); labels are pedagogical where not sourced from FRS.
+A.fallback = {item={[6948]="Камень возвращения",[2447]="Мирноцвет",[765]="Сребролист",[2770]="Медная руда"},spell={[116]="Ледяная стрела",[133]="Огненный шар",[1459]="Чародейский интеллект",[118]="Превращение"}}

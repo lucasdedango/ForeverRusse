@@ -1,0 +1,17 @@
+## Interface: 16001
+## AllowLoadGameType: camelot
+## Title: ForeverRusse | Русский
+## Notes: Apprendre le russe en jouant à WoW Forever (frFR).
+## Version: 0.1.0
+## OptionalDeps: ForeverRosettaStone
+## SavedVariables: ForeverRusseDB
+Core.lua
+Data/Alphabet.lua
+Data/Vocabulary.lua
+Modules/Cyrillic.lua
+Modules/Learning.lua
+Modules/Translations.lua
+Modules/Audio.lua
+Modules/Context.lua
+Modules/UI.lua
+Modules/Integration.lua
