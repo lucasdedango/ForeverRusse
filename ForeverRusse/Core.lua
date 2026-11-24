@@ -1,6 +1,6 @@
 local name, A = ...
 A.name, A.version = name, "0.1.0"
-A.defaults = {tooltips=true, spells=true, units=true, quests=true, zones=true, autoQuest=false, autoReview=false, collect=true, hints=true, colorLetters=true, audio=true, hideFrench=false}
+A.defaults = {tooltips=true, tooltipBelowTitle=true, spells=true, units=true, quests=true, zones=true, autoQuest=false, autoReview=false, collect=true, hints=true, colorLetters=true, audio=true, hideFrench=false}
 A.errors = {}
 function A:Print(msg) print("|cffd9b66aForeverRusse:|r "..tostring(msg)) end
 function A:Safe(label, fn, ...)

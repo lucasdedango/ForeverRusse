@@ -1,10 +1,11 @@
 local _, A = ...
 local function label(parent, x,y,w,text,template)
     local f=parent:CreateFontString(nil,"OVERLAY",template or "GameFontHighlight")
+    A:ApplyFont(f)
     f:SetPoint("TOPLEFT",x,y); f:SetWidth(w); f:SetJustifyH("LEFT"); f:SetJustifyV("TOP"); f:SetText(text or ""); return f
 end
 local function button(parent,x,y,w,h,text,fn)
-    local b=CreateFrame("Button",nil,parent,"UIPanelButtonTemplate"); b:SetSize(w,h); b:SetPoint("TOPLEFT",x,y); b:SetText(text); b:SetScript("OnClick",fn); return b
+    local b=CreateFrame("Button",nil,parent,"UIPanelButtonTemplate"); b:SetSize(w,h); b:SetPoint("TOPLEFT",x,y); A:ApplyButtonFonts(b); b:SetText(text); b:SetScript("OnClick",fn); return b
 end
 local function scroll(parent,x,y,w,h)
     local s=CreateFrame("ScrollFrame",nil,parent,"UIPanelScrollFrameTemplate"); s:SetPoint("TOPLEFT",x,y); s:SetSize(w,h)
@@ -24,6 +25,9 @@ function A:ShowTab(tab)
     if not self.frame then self:BuildUI() end
     for k,p in pairs(self.pages) do p:SetShown(k==tab) end
     self.tab=tab; self.frame:Show(); self:RefreshStats()
+    if tab=="fonttest" then
+        setBlock(self.fontTestChild,self.fontTestText,self:FontSamples(),375)
+    end
     if tab=="alphabet" then self:RefreshAlphabet() elseif tab=="context" then self:RefreshContext() elseif tab=="dictionary" then self:RefreshDictionary() elseif tab=="review" and not self.question then self:NewQuestion() end
 end
 function A:RefreshStats()
@@ -37,7 +41,7 @@ end
 function A:RefreshContext()
     if not self.contextText or not self.context or self.tab~="context" then return end
     local c=self.context; local parts={c.source..(c.ai and " • traduction IA signalée" or ""),"",self:Color(c.ru)}
-    if self:On("hints") and #c.ru<400 then parts[#parts+1]="\nLecture approximative : "..self:Translit(c.ru) end
+    if self:On("hints") and #c.ru<400 then parts[#parts+1]="\nTranslittération : "..self:Translit(c.ru) end
     if not self:On("hideFrench") and c.fr~="" then parts[#parts+1]="\nFR : "..c.fr end
     local gloss=self:ContextGlossary(); if #gloss>0 then parts[#parts+1]="\nVOCABULAIRE RECONNU"; for _,r in ipairs(gloss) do parts[#parts+1]=r[1].." → "..r[2].." — "..r[3] end end
     setBlock(self.contextChild,self.contextText,table.concat(parts,"\n"),310); self.contextScroll:SetVerticalScroll(0)
@@ -94,7 +98,7 @@ function A:BuildUI()
     button(p,145,-326,150,27,"Afficher / cacher FR",function() A.db.settings.hideFrench=not A:On("hideFrench"); A:RefreshContext() end)
     button(p,305,-326,150,27,"Ajouter au lexique",function() local c=A.context; if c and A:Card(c.ru,c.fr,"jeu",c.source) then A:Print("Ajouté."); A:RefreshStats() else A:Print("Texte trop long ou traduction indisponible.") end end)
     local pin=button(p,465,-326,150,27,"Épingler le texte",function(b) A.contextPinned=not A.contextPinned; b:SetText(A.contextPinned and "Désépingler" or "Épingler le texte") end)
-    p=self.pages.dictionary; label(p,0,0,120,"Recherche :"); self.search=CreateFrame("EditBox",nil,p,"InputBoxTemplate"); self.search:SetSize(300,25); self.search:SetPoint("TOPLEFT",95,5); self.search:SetAutoFocus(false); self.search:SetScript("OnTextChanged",function() A.dictPage=1; A:RefreshDictionary() end); self.search:SetScript("OnEscapePressed",function(s) s:ClearFocus() end)
+    p=self.pages.dictionary; label(p,0,0,120,"Recherche :"); self.search=CreateFrame("EditBox",nil,p,"InputBoxTemplate"); self.search:SetSize(300,25); self.search:SetPoint("TOPLEFT",95,5); self.search:SetAutoFocus(false); self:ApplyFont(self.search); self.search:SetScript("OnTextChanged",function() A.dictPage=1; A:RefreshDictionary() end); self.search:SetScript("OnEscapePressed",function(s) s:ClearFocus() end)
     self.dictScroll,self.dictChild=scroll(p,0,-35,638,285); self.dictText=textBlock(self.dictChild,"",630)
     button(p,0,-335,100,27,"Précédent",function() A.dictPage=(A.dictPage or 1)-1; A:RefreshDictionary() end); button(p,110,-335,100,27,"Suivant",function() A.dictPage=(A.dictPage or 1)+1; A:RefreshDictionary() end)
     button(p,220,-335,210,27,"Ajouter lexique de base",function() A:Seed(); A:RefreshDictionary() end)
@@ -103,5 +107,12 @@ function A:BuildUI()
     for i,s in ipairs(settings) do checkbox(p,((i-1)%2)*330,-math.floor((i-1)/2)*35,s[1],s[2]) end
     button(p,0,-235,150,28,"Lister les voix",function() A:ListVoices() end); button(p,160,-235,150,28,"Diagnostics",function() A:Debug() end); button(p,320,-235,180,28,"Test audio russe",function() A:Speak("Привет! Я учу русский язык.") end)
     label(p,0,-280,660,"/fru voice ID : choisir une voix locale. /fru add RUSSE ; FRANÇAIS : carte manuelle. /fru quest ID : ouvrir une quête. Les données FRS sont facultatives. Les préférences sont communes au compte.")
+    checkbox(p,0,-327,"Russe sous le titre (sinon en bas)","tooltipBelowTitle")
+    button(p,340,-330,180,28,"Tester la police",function() A:ShowTab("fonttest") end)
+    p=CreateFrame("Frame",nil,f); p:SetPoint("TOPLEFT",24,-113); p:SetSize(670,395)
+    self.pages.fonttest=p
+    local _,fontTestChild=scroll(p,0,0,638,375)
+    self.fontTestChild=fontTestChild
+    self.fontTestText=textBlock(fontTestChild,"",630)
     self:RefreshStats(); f:Hide()
 end

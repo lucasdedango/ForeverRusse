@@ -1,10 +1,10 @@
 # Roadmap
 
 ## P0 — validation réelle de v0.1
-- Vérifier le chargement sur le build Forever actuel, les templates de frames, les polices cyrilliques et les hooks de tooltip. Tester sans FRS puis avec FRS v3 en mode normal et API only.
+- Vérifier le chargement sur le build Forever actuel, les templates de frames, le rendu de DejaVu Sans et le placement dans les infobulles principales et de comparaison. Tester sans FRS puis avec FRS v3 en mode normal et API only.
 - Inspecter un vrai record de quête FRS (structure, champs, placeholders, objectifs) ; corriger l'adaptateur et ajouter des fixtures minimales fictives.
 - Vérifier PNJ et zones, voix TTS russes, scroll et taille du panneau sur différentes résolutions. Tester en combat pour confirmer absence d'erreur / taint.
-- Ajouter tests d'intégration avec mocks, trace opt-in et tests des valeurs secrètes.
+- Étendre les tests simulés aux autres événements et ajouter une trace facultative.
 
 ## P1 — pédagogie plus fine
 - Exercices lettres ciblés par fréquence et difficulté, écoute→lettre, saisie avec clavier cyrillique virtuel, lecture de vrais mots, distinction lettres trompeuses (В Н Р С У Х).

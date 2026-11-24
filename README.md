@@ -17,7 +17,7 @@ Autre méthode : utiliser le ZIP d'installation généré par `python scripts/pa
 | Module | Comportement v0.1 |
 |---|---|
 | Alphabet | 33 lettres majuscules/minuscules, explications FR, repères phonétiques, tests et couleurs de maîtrise |
-| Tooltips | Ligne russe et translittération sur objets, sorts, PNJ selon les données disponibles |
+| Tooltips | Nom russe doré sous le titre (ou en bas), translittération facultative, comparaison des équipements |
 | Contexte | Dernier texte rencontré, français facultatif, épinglage, lexique extrait par correspondance exacte ou formes connues |
 | Quêtes | Événements PNJ et commande par ID, textes FRS en panneau séparé, ouverture automatique facultative |
 | Monde | Zone/sous-zone via le résolveur FRS, PNJ ciblé via GUID ; pas de modification de carte |
@@ -33,11 +33,14 @@ Le corpus pédagogique est original et limité. Les traductions FRS peuvent incl
 
 ## Commandes
 
+Dans Options, décochez « Russe sous le titre (sinon en bas) » pour déplacer le nom russe. Le changement s’applique à l’ouverture suivante de l’infobulle. L’option « Translittération » contrôle la ligne grise en alphabet latin. Par exemple, « Хороший отдых » donne « khoroshiy otdykh ».
+
 - `/fru` : alphabet ; `/fru review` : révisions ; `/fru context` : dernier contexte ; `/fru dictionary` : lexique ; `/fru grammar` ; `/fru settings`.
 - `/fru quest 783` : exemple de consultation par ID, si couvert par FRS.
 - `/fru add лес ; forêt` : ajouter une carte manuelle.
 - `/fru seed` : réimporter le lexique (sans doublons exacts). `/fru seed verbe` : une catégorie.
 - `/fru voices`, `/fru voice 2` (ID exemple, choisir selon la liste), `/fru voice auto`, `/fru say Привет!`.
+- `/fru fonttest` ouvre une planche de test DejaVu Sans avec les 33 lettres russes, les accents français et les accents toniques colorés.
 - `/fru debug` : erreurs internes capturées, build, FRS, traductions manquantes. `/fru hide` : fermer.
 
 ### Prononciation Windows

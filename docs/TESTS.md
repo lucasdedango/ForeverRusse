@@ -18,6 +18,9 @@ Le 24 novembre 2026, les fichiers du TOC ont été chargés et le test exécuté
 
 ## Checklist en jeu (à réaliser)
 
+- Ouvrir `/fru fonttest` et vérifier les 33 lettres dans les deux casses, les accents français et les accents toniques. Basculer la coloration dans Options et vérifier que l’accent suit sa lettre. Contrôler aussi les boutons d’alphabet au survol, le texte russe d’une quête, la saisie et les résultats du lexique, puis les réponses de révision avant et après désactivation.
+- Survoler un équipement traduit et ouvrir la comparaison avec Maj. Vérifier le bloc russe doré sous le titre de l’objet principal et de chaque objet équipé, la couleur de rareté du titre français, la lecture grise facultative et les écarts de statistiques. Refaire en position basse et vérifier que le bloc suit les écarts de statistiques. Alterner entre objets traduits et non traduits, rouvrir la même infobulle et tester avec FRS en mode normal puis API only.
+
 1. Activer `/console scriptErrors 1`, installer sans FRS, `/reload`, `/fru debug`, ouvrir chaque onglet. Vérifier lettres russes visibles et panneau déplaçable.
 2. Cliquer une lettre, lancer un QCM, répondre juste/faux, changer de mode. Faire `/reload` et vérifier la persistance. Ajouter `/fru add лес ; forêt` ; chercher dans le lexique.
 3. Survoler pierre de foyer et sort du mage si disponibles : FR intact, RU ajouté, pas de doublon. Tester en combat (aucune tentative de traduction dynamique attendue).

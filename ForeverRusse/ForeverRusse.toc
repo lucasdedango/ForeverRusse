@@ -9,6 +9,7 @@ Core.lua
 Data/Alphabet.lua
 Data/Vocabulary.lua
 Modules/Cyrillic.lua
+Modules/Fonts.lua
 Modules/Learning.lua
 Modules/Translations.lua
 Modules/Audio.lua
